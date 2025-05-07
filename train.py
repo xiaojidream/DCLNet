@@ -77,7 +77,8 @@ def main():
 
 
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-3, betas=(0.9, 0.99))
-    criterion = nn.CrossEntropyLoss()
+    weights = torch.FloatTensor([1.0, 1.56]).cuda()
+    criterion = nn.CrossEntropyLoss(weight=weights)
 
     dataloader_tr = dataloader['train']
     dataloader_val = dataloader['val']
